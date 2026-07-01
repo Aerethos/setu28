@@ -65,6 +65,10 @@ body {
   border: none;
 }
 
+.anchor-offset {
+  scroll-margin-top: 5.5rem;
+}
+
 @media (max-width: 768px) {
   .vertical-text {
     writing-mode: horizontal-tb;
@@ -72,21 +76,3 @@ body {
   }
 }
 
-@keyframes kenburns {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.08);
-  }
-}
-
-.animate-kenburns {
-  animation: kenburns 24s ease-in-out infinite alternate;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-kenburns {
-    animation: none;
-  }
-}

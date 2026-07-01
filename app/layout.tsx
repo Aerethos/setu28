@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from 'next/font/google';
 import '../styles/globals.css';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
+import ScrollProgress from '../components/ScrollProgress';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -43,6 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <body className="bg-monument font-body text-tungsten antialiased">
+        <ScrollProgress />
         <Nav />
         <main>{children}</main>
         <Footer />

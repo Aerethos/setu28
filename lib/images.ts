@@ -4,4 +4,5 @@ export const IMAGES = {
   lightshowCrowd: '/images/lightshow-crowd.png',
   mountCongreveBend: '/images/mount-congreve-bend.webp',
   mountCongreveGolden: '/images/mount-congreve-golden.jpg',
+  mountCongreveNight: '/images/mount-congreve-night.png',
 } as const;

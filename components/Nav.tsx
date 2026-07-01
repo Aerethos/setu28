@@ -1,68 +1,83 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const LINKS = [
-  { href: '/the-night', label: 'THE NIGHT' },
-  { href: '/vision', label: 'THE VISION' },
-  { href: '/waterford', label: 'WATERFORD' },
-  { href: '/contact', label: 'CONTACT' },
+  { href: '#vision', label: 'THE VISION' },
+  { href: '#the-night', label: 'THE NIGHT' },
+  { href: '#waterford', label: 'WATERFORD' },
 ];
 
 export default function Nav() {
-  const pathname = usePathname();
-  const isHome = pathname === '/';
-  const [visible, setVisible] = useState(!isHome);
+  const [visible, setVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string>('');
 
   useEffect(() => {
-    if (!isHome) {
-      setVisible(true);
-      return;
-    }
-
-    setVisible(false);
-
     const onScroll = () => {
       setVisible(window.scrollY > window.innerHeight * 0.7);
     };
-
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
-  }, [isHome]);
+  }, []);
 
   useEffect(() => {
+    const sections = LINKS.map((link) => document.getElementById(link.href.slice(1))).filter(
+      (el): el is HTMLElement => Boolean(el)
+    );
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  const handleNavigate = (href: string) => {
     setMenuOpen(false);
-  }, [pathname]);
+    const el = document.getElementById(href.slice(1));
+    el?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <>
       <nav
-        className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-6 transition-opacity duration-500 md:px-12"
+        className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-6 transition-opacity duration-500 sm:px-10 md:px-16"
         style={{ opacity: visible ? 1 : 0, pointerEvents: visible ? 'auto' : 'none' }}
       >
-        <Link
-          href="/"
+        <button
+          onClick={() => {
+            setMenuOpen(false);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
           className="font-body text-[0.65rem] font-light tracking-widest2 text-tungsten transition-colors duration-200 hover:text-electric"
         >
           SETU BALL 2028
-        </Link>
+        </button>
 
-        <div className="hidden items-center gap-6 md:flex lg:gap-10">
+        <div className="hidden items-center gap-8 md:flex lg:gap-12">
           {LINKS.map((link) => {
-            const active = pathname === link.href;
+            const active = activeId === link.href.slice(1);
             return (
-              <Link
+              <button
                 key={link.href}
-                href={link.href}
+                onClick={() => handleNavigate(link.href)}
                 className="font-body text-[0.65rem] font-light tracking-widest2 transition-colors duration-200 hover:text-electric"
                 style={{ color: active ? 'var(--electric)' : 'var(--tungsten)' }}
               >
                 {link.label}
-              </Link>
+              </button>
             );
           })}
         </div>
@@ -94,16 +109,16 @@ export default function Nav() {
         </button>
 
         {LINKS.map((link) => {
-          const active = pathname === link.href;
+          const active = activeId === link.href.slice(1);
           return (
-            <Link
+            <button
               key={link.href}
-              href={link.href}
+              onClick={() => handleNavigate(link.href)}
               className="font-display text-4xl font-light transition-colors duration-200"
               style={{ color: active ? 'var(--electric)' : 'var(--tungsten)' }}
             >
               {link.label}
-            </Link>
+            </button>
           );
         })}
       </div>
