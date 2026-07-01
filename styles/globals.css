@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --abyss: #050810;
+  --prussian: #0d1b2a;
+  --tungsten: #e2e8f0;
+  --electric: #1a56db;
+  --ghost: rgba(226, 232, 240, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--abyss);
+  color: var(--tungsten);
+  min-height: 100vh;
+}
+
+.bg-monument {
+  background: linear-gradient(160deg, #050810 0%, #0d1b2a 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.tracking-widest2 {
+  letter-spacing: 0.2em;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+::selection {
+  background: var(--electric);
+  color: var(--tungsten);
+}
+
+.roman {
+  color: var(--electric);
+  font-family: var(--font-inter);
+  font-weight: 300;
+}
+
+.rule {
+  height: 1px;
+  width: 100%;
+  background: var(--electric);
+  opacity: 0.08;
+  border: none;
+}
+
+.rule-v {
+  width: 1px;
+  background: var(--electric);
+  opacity: 0.08;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .vertical-text {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+}
