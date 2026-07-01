@@ -1,6 +1,6 @@
 import FadeIn from '../../components/FadeIn';
 import CoverImage from '../../components/CoverImage';
-import { IMAGES, CREDITS } from '../../lib/images';
+import { IMAGES } from '../../lib/images';
 
 export default function Vision() {
   return (
@@ -8,8 +8,8 @@ export default function Vision() {
       <section className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden px-6 md:px-12">
         <div className="absolute inset-0 z-0">
           <CoverImage
-            src={IMAGES.waterfordAerial}
-            alt="Aerial view of Waterford and the River Suir"
+            src={IMAGES.lightshowAerialWide}
+            alt="Aerial view of the light show over the River Suir at Waterford"
             overlay="full"
             priority
           />
@@ -38,9 +38,8 @@ export default function Vision() {
           </p>
           <div className="relative h-64 w-full md:h-72 md:w-2/5">
             <CoverImage
-              src={IMAGES.waterfordNight}
-              alt="The River Suir at night, mirroring the city lights"
-              credit={CREDITS.waterfordNight}
+              src={IMAGES.lightshowAerialClose}
+              alt="Laser light show erupting from the North Quay over the River Suir"
               overlay="soft"
             />
           </div>
@@ -54,9 +53,8 @@ export default function Vision() {
           </p>
           <div className="relative h-64 w-full md:h-72 md:w-2/5">
             <CoverImage
-              src={IMAGES.reginaldsTower}
-              alt="Reginald's Tower, the oldest civic building in Ireland"
-              credit={CREDITS.reginaldsTower}
+              src={IMAGES.mountCongreveBend}
+              alt="Aerial view of Mount Congreve estate on the bend of the River Suir"
               overlay="soft"
             />
           </div>
@@ -70,9 +68,8 @@ export default function Vision() {
           </p>
           <div className="relative h-64 w-full md:h-72 md:w-2/5">
             <CoverImage
-              src={IMAGES.mountCongreveHouse}
-              alt="Mount Congreve House, a Georgian estate in County Waterford"
-              credit={CREDITS.mountCongreveHouse}
+              src={IMAGES.mountCongreveGolden}
+              alt="Aerial view of Mount Congreve estate at golden hour"
               overlay="soft"
             />
           </div>

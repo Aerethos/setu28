@@ -1,15 +1,14 @@
 import FadeIn from '../../components/FadeIn';
 import CoverImage from '../../components/CoverImage';
-import { IMAGES, CREDITS } from '../../lib/images';
+import { IMAGES } from '../../lib/images';
 
 const sections = [
   {
     numeral: 'I',
     title: 'The Procession',
     align: 'left' as const,
-    image: IMAGES.waterfordMarina,
-    imageAlt: 'Boats moored on the River Suir at Waterford at dusk',
-    credit: CREDITS.waterfordMarina,
+    image: IMAGES.lightshowCrowd,
+    imageAlt: 'Crowds gathered along the River Suir as the procession begins',
     body: [
       'Four thousand students. Formal wear. The River Suir at night.',
       'As darkness falls over Waterford’s oldest streets, the boats begin to move. There has never been a night like this in Ireland.',
@@ -19,9 +18,8 @@ const sections = [
     numeral: 'II',
     title: 'The Light Show',
     align: 'right' as const,
-    image: IMAGES.waterfordNight,
-    imageAlt: 'Night view of the River Suir reflecting the lights of Waterford',
-    credit: CREDITS.waterfordNight,
+    image: IMAGES.lightshowAerialClose,
+    imageAlt: 'Laser light show erupting from the North Quay over the River Suir',
     body: [
       'A laser and light show of international scale erupts from Waterford’s North Quay development. Inspired by the spectacle of the Paris 2024 Olympic opening ceremony on the Seine.',
       'Visible across the entire city. The River Suir becomes a mirror.',
@@ -31,9 +29,8 @@ const sections = [
     numeral: 'III',
     title: 'The City',
     align: 'left' as const,
-    image: IMAGES.reginaldsTower,
-    imageAlt: "Reginald's Tower on the quay at Waterford",
-    credit: CREDITS.reginaldsTower,
+    image: IMAGES.lightshowAerialWide,
+    imageAlt: 'Wide aerial view of the light show reaching across Waterford city',
     body: [
       'This night belongs to Waterford. A citywide festival runs simultaneously across the quays, the streets, the pubs, the squares — for families, for children, for every resident of Ireland’s oldest city.',
       'Forty thousand people. One river. One night.',
@@ -43,9 +40,8 @@ const sections = [
     numeral: 'IV',
     title: 'Mount Congreve',
     align: 'right' as const,
-    image: IMAGES.mountCongreveHouse,
-    imageAlt: 'Mount Congreve House, a Georgian estate in County Waterford',
-    credit: CREDITS.mountCongreveHouse,
+    image: IMAGES.mountCongreveBend,
+    imageAlt: 'Aerial view of Mount Congreve estate on the bend of the River Suir',
     body: [
       'The procession ends at Mount Congreve, one of Ireland’s most extraordinary Georgian estates. The boats dock. The students arrive. The Ball begins.',
       'What follows is a formal celebration unlike anything this country has produced.',
@@ -59,8 +55,8 @@ export default function TheNight() {
       <section className="relative flex min-h-[70vh] w-full flex-col justify-center overflow-hidden px-6 py-32 md:px-12">
         <div className="absolute inset-0 z-0">
           <CoverImage
-            src={IMAGES.waterfordAerial}
-            alt="Aerial view of Waterford and the River Suir"
+            src={IMAGES.lightshowAerialWide}
+            alt="Aerial view of the light show over the River Suir at Waterford"
             overlay="full"
             priority
           />
@@ -87,7 +83,6 @@ export default function TheNight() {
                 <CoverImage
                   src={section.image}
                   alt={section.imageAlt}
-                  credit={section.credit}
                   overlay="soft"
                 />
               </div>
@@ -125,10 +120,10 @@ export default function TheNight() {
 
       <FadeIn>
         <section className="relative w-full overflow-hidden px-6 py-32 md:px-12 md:py-48">
-          <div className="absolute inset-0 z-0 opacity-50">
+          <div className="absolute inset-0 z-0">
             <CoverImage
-              src={IMAGES.mountCongreveTemple}
-              alt="Temple and river view at Mount Congreve Gardens"
+              src={IMAGES.mountCongreveGolden}
+              alt="Aerial view of Mount Congreve estate at golden hour"
               overlay="full"
             />
           </div>

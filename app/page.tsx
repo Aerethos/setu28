@@ -3,7 +3,7 @@ import ParticleField from '../components/ParticleField';
 import Countdown from '../components/Countdown';
 import FadeIn from '../components/FadeIn';
 import CoverImage from '../components/CoverImage';
-import { IMAGES, CREDITS } from '../lib/images';
+import { IMAGES } from '../lib/images';
 
 export default function Home() {
   return (
@@ -12,9 +12,8 @@ export default function Home() {
       <section className="relative flex h-[100svh] w-full flex-col justify-between overflow-hidden px-6 pb-10 pt-24 md:px-12 md:pb-16">
         <div className="absolute inset-0 z-0">
           <CoverImage
-            src={IMAGES.waterfordNight}
-            alt="Night view of the River Suir and Waterford city"
-            credit={CREDITS.waterfordNight}
+            src={IMAGES.lightshowAerialClose}
+            alt="Aerial view of the light show over the River Suir at Waterford"
             overlay="full"
             priority
           />
@@ -63,9 +62,8 @@ export default function Home() {
           </p>
           <div className="relative h-64 w-full md:h-80 md:w-2/5">
             <CoverImage
-              src={IMAGES.mountCongreveTemple}
-              alt="Temple and river view at Mount Congreve Gardens"
-              credit={CREDITS.mountCongreveTemple}
+              src={IMAGES.mountCongreveGolden}
+              alt="Aerial view of Mount Congreve estate on the River Suir at golden hour"
               overlay="soft"
             />
           </div>
@@ -104,9 +102,8 @@ export default function Home() {
         <section className="relative flex min-h-[70vh] w-full flex-col justify-end overflow-hidden px-6 py-20 md:px-12 md:py-24">
           <div className="absolute inset-0 z-0">
             <CoverImage
-              src={IMAGES.waterfordMarina}
-              alt="Boats moored on the River Suir at Waterford"
-              credit={CREDITS.waterfordMarina}
+              src={IMAGES.lightshowCrowd}
+              alt="Crowds watching the light show over the River Suir"
               overlay="bottom"
             />
           </div>
@@ -137,36 +134,22 @@ export default function Home() {
 
       {/* SECTION 5 — PULL QUOTE */}
       <FadeIn>
-        <section className="flex w-full flex-col items-center gap-8 px-6 py-40 text-center md:px-24 md:py-56">
-          <p className="max-w-4xl font-display text-3xl font-light italic leading-[1.15] text-tungsten md:text-5xl">
+        <section className="relative flex w-full flex-col items-center gap-8 overflow-hidden px-6 py-40 text-center md:px-24 md:py-56">
+          <div className="absolute inset-0 z-0">
+            <CoverImage
+              src={IMAGES.lightshowAerialWide}
+              alt="Wide aerial view of the light show across Waterford"
+              overlay="full"
+              motion={false}
+            />
+          </div>
+          <p className="relative z-10 max-w-4xl font-display text-3xl font-light italic leading-[1.15] text-tungsten md:text-5xl">
             &ldquo;This is not a student event that got ambitious. This is a
             civic moment that happens to begin with a university.&rdquo;
           </p>
-          <span className="font-body text-[0.65rem] font-light tracking-widest2 text-electric">
+          <span className="relative z-10 font-body text-[0.65rem] font-light tracking-widest2 text-electric">
             — NATHAN SFENDJI, FOUNDING PRESIDENT
           </span>
-        </section>
-      </FadeIn>
-
-      {/* SECTION 6 — RENDERS TEASER */}
-      <FadeIn>
-        <section className="w-full px-6 py-28 md:px-12 md:py-40">
-          <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
-            <div>
-              <span className="font-body text-[0.65rem] font-light tracking-widest2 text-electric">
-                CONCEPT IMAGERY
-              </span>
-              <p className="mt-6 max-w-lg font-display text-3xl font-light leading-[1.15] text-tungsten md:text-5xl">
-                See the night before it happens.
-              </p>
-            </div>
-            <Link
-              href="/renders"
-              className="group shrink-0 font-body text-[0.65rem] font-light tracking-widest2 text-tungsten transition-colors duration-200 hover:text-electric"
-            >
-              View early renders <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </Link>
-          </div>
         </section>
       </FadeIn>
     </>

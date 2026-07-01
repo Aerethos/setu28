@@ -1,6 +1,6 @@
 import FadeIn from '../../components/FadeIn';
 import CoverImage from '../../components/CoverImage';
-import { IMAGES, CREDITS } from '../../lib/images';
+import { IMAGES } from '../../lib/images';
 
 export default function Waterford() {
   return (
@@ -8,9 +8,8 @@ export default function Waterford() {
       <section className="relative flex min-h-[100svh] w-full flex-col justify-center overflow-hidden px-6 py-32 md:px-12">
         <div className="absolute inset-0 z-0">
           <CoverImage
-            src={IMAGES.reginaldsTower}
-            alt="Reginald's Tower on the quay at Waterford"
-            credit={CREDITS.reginaldsTower}
+            src={IMAGES.mountCongreveBend}
+            alt="Aerial view of Mount Congreve estate on the bend of the River Suir"
             overlay="full"
             priority
           />
@@ -39,9 +38,8 @@ export default function Waterford() {
         <section className="relative flex min-h-[60vh] w-full items-center justify-end overflow-hidden px-6 py-24 md:px-12 md:py-32">
           <div className="absolute inset-0 z-0">
             <CoverImage
-              src={IMAGES.waterfordMarina}
-              alt="Boats moored on the River Suir at Waterford"
-              credit={CREDITS.waterfordMarina}
+              src={IMAGES.lightshowCrowd}
+              alt="Crowds gathered along the River Suir at Waterford"
               overlay="bottom"
             />
           </div>
@@ -70,9 +68,8 @@ export default function Waterford() {
           </div>
           <div className="relative mt-12 h-72 w-full md:h-96">
             <CoverImage
-              src={IMAGES.waterfordAerial}
-              alt="Aerial view of Waterford and the River Suir"
-              credit={CREDITS.waterfordAerial}
+              src={IMAGES.lightshowAerialClose}
+              alt="Laser light show erupting from the North Quay over the River Suir"
               overlay="soft"
             />
           </div>
@@ -83,8 +80,8 @@ export default function Waterford() {
         <section className="relative flex w-full items-center justify-center overflow-hidden px-6 py-40 text-center md:px-12 md:py-56">
           <div className="absolute inset-0 z-0">
             <CoverImage
-              src={IMAGES.waterfordNight}
-              alt="Night view of the River Suir and Waterford city"
+              src={IMAGES.lightshowAerialWide}
+              alt="Wide aerial view of the light show across Waterford"
               overlay="full"
             />
           </div>
