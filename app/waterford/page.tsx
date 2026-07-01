@@ -1,13 +1,24 @@
 import FadeIn from '../../components/FadeIn';
+import CoverImage from '../../components/CoverImage';
+import { IMAGES, CREDITS } from '../../lib/images';
 
 export default function Waterford() {
   return (
     <>
-      <section className="relative flex min-h-[100svh] w-full flex-col justify-center px-6 py-32 md:px-12">
-        <h1 className="font-display text-[clamp(3rem,10vw,9rem)] font-light leading-[1.1] text-tungsten">
+      <section className="relative flex min-h-[100svh] w-full flex-col justify-center overflow-hidden px-6 py-32 md:px-12">
+        <div className="absolute inset-0 z-0">
+          <CoverImage
+            src={IMAGES.reginaldsTower}
+            alt="Reginald's Tower on the quay at Waterford"
+            credit={CREDITS.reginaldsTower}
+            overlay="full"
+            priority
+          />
+        </div>
+        <h1 className="relative z-10 font-display text-[clamp(3rem,10vw,9rem)] font-light leading-[1.1] text-tungsten">
           Ireland&apos;s oldest city.
         </h1>
-        <span className="vertical-text absolute right-6 top-1/2 hidden -translate-y-1/2 font-body text-[0.65rem] font-light tracking-widest2 text-tungsten md:block">
+        <span className="vertical-text absolute right-6 top-1/2 z-10 hidden -translate-y-1/2 font-body text-[0.65rem] font-light tracking-widest2 text-tungsten md:block">
           914 AD — 2028
         </span>
       </section>
@@ -25,8 +36,16 @@ export default function Waterford() {
       </FadeIn>
 
       <FadeIn>
-        <section className="w-full px-6 py-28 text-right md:px-12 md:py-40">
-          <p className="font-display text-4xl font-light leading-[1.15] text-tungsten md:text-7xl">
+        <section className="relative flex min-h-[60vh] w-full items-center justify-end overflow-hidden px-6 py-24 md:px-12 md:py-32">
+          <div className="absolute inset-0 z-0">
+            <CoverImage
+              src={IMAGES.waterfordMarina}
+              alt="Boats moored on the River Suir at Waterford"
+              credit={CREDITS.waterfordMarina}
+              overlay="bottom"
+            />
+          </div>
+          <p className="relative z-10 font-display text-4xl font-light leading-[1.15] text-tungsten md:text-right md:text-7xl">
             The oldest city in Ireland. Its greatest night.
           </p>
         </section>
@@ -34,7 +53,7 @@ export default function Waterford() {
 
       <FadeIn>
         <section className="w-full px-6 py-24 md:px-12 md:py-32">
-          <div className="flex flex-col gap-16 md:flex-row md:items-start md:justify-between">
+          <div className="flex flex-col gap-10 md:flex-row md:items-center md:gap-8">
             <div className="flex items-start gap-6 md:w-1/3">
               <div className="mt-1 h-24 w-px shrink-0 bg-electric opacity-40" />
               <span className="font-body text-[0.65rem] font-light tracking-widest2 text-electric">
@@ -49,12 +68,27 @@ export default function Waterford() {
               night, the whole city watches the river carry both.
             </p>
           </div>
+          <div className="relative mt-12 h-72 w-full md:h-96">
+            <CoverImage
+              src={IMAGES.waterfordAerial}
+              alt="Aerial view of Waterford and the River Suir"
+              credit={CREDITS.waterfordAerial}
+              overlay="soft"
+            />
+          </div>
         </section>
       </FadeIn>
 
       <FadeIn>
-        <section className="flex w-full justify-center px-6 py-32 text-center md:px-12 md:py-48">
-          <p className="max-w-4xl font-display text-3xl font-light italic leading-[1.15] text-tungsten md:text-5xl">
+        <section className="relative flex w-full items-center justify-center overflow-hidden px-6 py-40 text-center md:px-12 md:py-56">
+          <div className="absolute inset-0 z-0">
+            <CoverImage
+              src={IMAGES.waterfordNight}
+              alt="Night view of the River Suir and Waterford city"
+              overlay="full"
+            />
+          </div>
+          <p className="relative z-10 max-w-4xl font-display text-3xl font-light italic leading-[1.15] text-tungsten md:text-5xl">
             Waterford has always known what it is. July 1, 2028 is when the
             world finds out.
           </p>

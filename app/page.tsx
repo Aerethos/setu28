@@ -2,12 +2,24 @@ import Link from 'next/link';
 import ParticleField from '../components/ParticleField';
 import Countdown from '../components/Countdown';
 import FadeIn from '../components/FadeIn';
+import CoverImage from '../components/CoverImage';
+import { IMAGES, CREDITS } from '../lib/images';
 
 export default function Home() {
   return (
     <>
       {/* SECTION 1 — HERO */}
       <section className="relative flex h-[100svh] w-full flex-col justify-between overflow-hidden px-6 pb-10 pt-24 md:px-12 md:pb-16">
+        <div className="absolute inset-0 z-0">
+          <CoverImage
+            src={IMAGES.waterfordNight}
+            alt="Night view of the River Suir and Waterford city"
+            credit={CREDITS.waterfordNight}
+            overlay="full"
+            priority
+          />
+        </div>
+
         <ParticleField />
 
         <div className="relative z-10 flex items-start justify-between">
@@ -43,12 +55,20 @@ export default function Home() {
         </span>
       </section>
 
-      {/* SECTION 2 — STATEMENT */}
+      {/* SECTION 2 — STATEMENT + IMAGE */}
       <FadeIn>
-        <section className="w-full px-6 py-32 md:px-12 md:py-48">
-          <p className="max-w-[60%] font-display text-4xl font-light leading-[1.15] text-tungsten md:text-6xl">
+        <section className="flex w-full flex-col gap-12 px-6 py-28 md:flex-row md:items-center md:gap-8 md:px-12 md:py-40">
+          <p className="font-display text-4xl font-light leading-[1.15] text-tungsten md:w-3/5 md:text-6xl">
             Something is coming to Waterford.
           </p>
+          <div className="relative h-64 w-full md:h-80 md:w-2/5">
+            <CoverImage
+              src={IMAGES.mountCongreveTemple}
+              alt="Temple and river view at Mount Congreve Gardens"
+              credit={CREDITS.mountCongreveTemple}
+              overlay="soft"
+            />
+          </div>
         </section>
       </FadeIn>
 
@@ -79,10 +99,19 @@ export default function Home() {
         </section>
       </FadeIn>
 
-      {/* SECTION 4 — THE NIGHT TEASER */}
+      {/* SECTION 4 — THE NIGHT TEASER, FULL-BLEED IMAGE */}
       <FadeIn>
-        <section className="w-full px-6 py-32 md:px-12 md:py-48">
-          <div className="flex flex-col gap-16 md:flex-row md:items-start md:justify-between">
+        <section className="relative flex min-h-[70vh] w-full flex-col justify-end overflow-hidden px-6 py-20 md:px-12 md:py-24">
+          <div className="absolute inset-0 z-0">
+            <CoverImage
+              src={IMAGES.waterfordMarina}
+              alt="Boats moored on the River Suir at Waterford"
+              credit={CREDITS.waterfordMarina}
+              overlay="bottom"
+            />
+          </div>
+
+          <div className="relative z-10 flex flex-col gap-16 md:flex-row md:items-end md:justify-between">
             <div className="flex items-start gap-6 md:w-1/3">
               <div className="mt-1 h-24 w-px shrink-0 bg-electric opacity-40" />
               <span className="font-body text-[0.65rem] font-light tracking-widest2 text-electric">
@@ -95,7 +124,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-16 flex justify-end">
+          <div className="relative z-10 mt-16 flex justify-end">
             <Link
               href="/the-night"
               className="group font-body text-[0.65rem] font-light tracking-widest2 text-tungsten transition-colors duration-200 hover:text-electric"
@@ -116,6 +145,28 @@ export default function Home() {
           <span className="font-body text-[0.65rem] font-light tracking-widest2 text-electric">
             — NATHAN SFENDJI, FOUNDING PRESIDENT
           </span>
+        </section>
+      </FadeIn>
+
+      {/* SECTION 6 — RENDERS TEASER */}
+      <FadeIn>
+        <section className="w-full px-6 py-28 md:px-12 md:py-40">
+          <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+            <div>
+              <span className="font-body text-[0.65rem] font-light tracking-widest2 text-electric">
+                CONCEPT IMAGERY
+              </span>
+              <p className="mt-6 max-w-lg font-display text-3xl font-light leading-[1.15] text-tungsten md:text-5xl">
+                See the night before it happens.
+              </p>
+            </div>
+            <Link
+              href="/renders"
+              className="group shrink-0 font-body text-[0.65rem] font-light tracking-widest2 text-tungsten transition-colors duration-200 hover:text-electric"
+            >
+              View early renders <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </Link>
+          </div>
         </section>
       </FadeIn>
     </>

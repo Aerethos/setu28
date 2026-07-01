@@ -8,6 +8,7 @@ const LINKS = [
   { href: '/the-night', label: 'THE NIGHT' },
   { href: '/vision', label: 'THE VISION' },
   { href: '/waterford', label: 'WATERFORD' },
+  { href: '/renders', label: 'RENDERS' },
   { href: '/contact', label: 'CONTACT' },
 ];
 
@@ -51,7 +52,7 @@ export default function Nav() {
           SETU BALL 2028
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-5 lg:gap-8 md:flex">
           {LINKS.map((link) => {
             const active = pathname === link.href;
             return (

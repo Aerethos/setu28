@@ -1,10 +1,20 @@
 import FadeIn from '../../components/FadeIn';
+import CoverImage from '../../components/CoverImage';
+import { IMAGES, CREDITS } from '../../lib/images';
 
 export default function Vision() {
   return (
     <>
-      <section className="flex min-h-[100svh] w-full items-center justify-center px-6 md:px-12">
-        <p className="max-w-4xl text-center font-display text-[clamp(2rem,6vw,4.5rem)] font-light leading-[1.15] text-tungsten">
+      <section className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden px-6 md:px-12">
+        <div className="absolute inset-0 z-0">
+          <CoverImage
+            src={IMAGES.waterfordAerial}
+            alt="Aerial view of Waterford and the River Suir"
+            overlay="full"
+            priority
+          />
+        </div>
+        <p className="relative z-10 max-w-4xl text-center font-display text-[clamp(2rem,6vw,4.5rem)] font-light leading-[1.15] text-tungsten">
           Why does our university have no ball?
         </p>
       </section>
@@ -22,26 +32,50 @@ export default function Vision() {
       </FadeIn>
 
       <FadeIn>
-        <section className="w-full px-6 py-28 md:px-12 md:py-40">
-          <p className="font-display text-4xl font-light leading-[1.15] text-tungsten md:text-7xl">
+        <section className="flex w-full flex-col gap-10 px-6 py-24 md:flex-row md:items-center md:gap-8 md:px-12 md:py-32">
+          <p className="font-display text-4xl font-light leading-[1.15] text-tungsten md:w-3/5 md:text-7xl">
             Inspired by Paris 2024.
           </p>
+          <div className="relative h-64 w-full md:h-72 md:w-2/5">
+            <CoverImage
+              src={IMAGES.waterfordNight}
+              alt="The River Suir at night, mirroring the city lights"
+              credit={CREDITS.waterfordNight}
+              overlay="soft"
+            />
+          </div>
         </section>
       </FadeIn>
 
       <FadeIn>
-        <section className="w-full px-6 py-28 text-right md:px-12 md:py-40">
-          <p className="font-display text-4xl font-light leading-[1.15] text-tungsten md:text-7xl">
+        <section className="flex w-full flex-col gap-10 px-6 py-24 md:flex-row-reverse md:items-center md:gap-8 md:px-12 md:py-32">
+          <p className="font-display text-4xl font-light leading-[1.15] text-tungsten md:w-3/5 md:text-right md:text-7xl">
             Built for Waterford.
           </p>
+          <div className="relative h-64 w-full md:h-72 md:w-2/5">
+            <CoverImage
+              src={IMAGES.reginaldsTower}
+              alt="Reginald's Tower, the oldest civic building in Ireland"
+              credit={CREDITS.reginaldsTower}
+              overlay="soft"
+            />
+          </div>
         </section>
       </FadeIn>
 
       <FadeIn>
-        <section className="w-full px-6 py-28 md:px-12 md:py-40">
-          <p className="font-display text-4xl font-light leading-[1.15] text-tungsten md:text-7xl">
+        <section className="flex w-full flex-col gap-10 px-6 py-24 md:flex-row md:items-center md:gap-8 md:px-12 md:py-32">
+          <p className="font-display text-4xl font-light leading-[1.15] text-tungsten md:w-3/5 md:text-7xl">
             Designed for history.
           </p>
+          <div className="relative h-64 w-full md:h-72 md:w-2/5">
+            <CoverImage
+              src={IMAGES.mountCongreveHouse}
+              alt="Mount Congreve House, a Georgian estate in County Waterford"
+              credit={CREDITS.mountCongreveHouse}
+              overlay="soft"
+            />
+          </div>
         </section>
       </FadeIn>
 
