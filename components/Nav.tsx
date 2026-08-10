@@ -1,127 +1,80 @@
 'use client';
 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { Wordmark } from './Wordmark';
+import { nav } from '@/content/site';
 
-const LINKS = [
-  { href: '#vision', label: 'THE VISION' },
-  { href: '#the-night', label: 'THE NIGHT' },
-  { href: '#waterford', label: 'WATERFORD' },
-];
-
-export default function Nav() {
-  const [visible, setVisible] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeId, setActiveId] = useState<string>('');
+export function Nav() {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setVisible(window.scrollY > window.innerHeight * 0.7);
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [open]);
 
-  useEffect(() => {
-    const sections = LINKS.map((link) => document.getElementById(link.href.slice(1))).filter(
-      (el): el is HTMLElement => Boolean(el)
-    );
-
-    if (sections.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, []);
-
-  const handleNavigate = (href: string) => {
-    setMenuOpen(false);
-    const el = document.getElementById(href.slice(1));
-    el?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(href + '/');
 
   return (
-    <>
-      <nav
-        className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-6 transition-opacity duration-500 sm:px-10 md:px-16"
-        style={{ opacity: visible ? 1 : 0, pointerEvents: visible ? 'auto' : 'none' }}
-      >
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          className="font-body text-[0.65rem] font-light tracking-widest2 text-tungsten transition-colors duration-200 hover:text-electric"
-        >
-          SETU BALL 2028
-        </button>
+    <header className="sticky top-0 z-50 border-b border-line bg-night/85 backdrop-blur-md">
+      <nav className="container-page flex h-16 items-center justify-between" aria-label="Primary">
+        <Wordmark as="link" size="sm" />
 
-        <div className="hidden items-center gap-8 md:flex lg:gap-12">
-          {LINKS.map((link) => {
-            const active = activeId === link.href.slice(1);
-            return (
-              <button
-                key={link.href}
-                onClick={() => handleNavigate(link.href)}
-                className="font-body text-[0.65rem] font-light tracking-widest2 transition-colors duration-200 hover:text-electric"
-                style={{ color: active ? 'var(--electric)' : 'var(--tungsten)' }}
+        <ul className="hidden items-center gap-6 lg:flex">
+          {nav.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+                className={`link-underline text-sm ${
+                  isActive(item.href) ? 'text-brass' : 'text-mist hover:text-stone'
+                }`}
               >
-                {link.label}
-              </button>
-            );
-          })}
-        </div>
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
         <button
-          aria-label="Open menu"
-          className="flex flex-col gap-[5px] md:hidden"
-          onClick={() => setMenuOpen(true)}
+          type="button"
+          className="lg:hidden text-sm uppercase tracking-wide2 text-mist hover:text-stone"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen((v) => !v)}
         >
-          <span className="block h-px w-6 bg-tungsten" />
-          <span className="block h-px w-6 bg-tungsten" />
-          <span className="block h-px w-6 bg-tungsten" />
+          {open ? 'Close' : 'Menu'}
         </button>
       </nav>
 
-      <div
-        className="fixed inset-0 z-50 flex flex-col items-start justify-center gap-8 bg-abyss px-8 transition-opacity duration-300 md:hidden"
-        style={{
-          opacity: menuOpen ? 1 : 0,
-          pointerEvents: menuOpen ? 'auto' : 'none',
-        }}
-      >
-        <button
-          aria-label="Close menu"
-          className="absolute right-8 top-8 font-body text-[0.65rem] font-light tracking-widest2 text-tungsten"
-          onClick={() => setMenuOpen(false)}
-        >
-          CLOSE
-        </button>
-
-        {LINKS.map((link) => {
-          const active = activeId === link.href.slice(1);
-          return (
-            <button
-              key={link.href}
-              onClick={() => handleNavigate(link.href)}
-              className="font-display text-4xl font-light transition-colors duration-200"
-              style={{ color: active ? 'var(--electric)' : 'var(--tungsten)' }}
-            >
-              {link.label}
-            </button>
-          );
-        })}
-      </div>
-    </>
+      {open && (
+        <div id="mobile-menu" className="lg:hidden border-t border-line bg-night">
+          <ul className="container-page flex flex-col py-4">
+            {nav.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  className={`block py-3 text-lg ${
+                    isActive(item.href) ? 'text-brass' : 'text-stone'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </header>
   );
 }

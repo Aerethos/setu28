@@ -3,22 +3,37 @@ module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './content/**/*.{js,ts}',
   ],
   theme: {
     extend: {
       colors: {
-        abyss: '#050810',
-        prussian: '#0D1B2A',
-        tungsten: '#E2E8F0',
-        electric: '#1A56DB',
-        ghost: 'rgba(226, 232, 240, 0.06)',
+        // Derived from the river and the estate. Dark water, night sky,
+        // stone, and a single warm accent used sparingly.
+        night: '#08141A', // night sky — deepest ground
+        water: '#0F2A31', // deep water — primary dark surface
+        south: '#102A30', // Waterford, south bank (a touch warmer/teal)
+        north: '#0C232C', // Kilkenny, north bank (a touch cooler/slate)
+        stone: '#E9E3D5', // limestone — primary light
+        mist: '#8FA0A2', // muted slate — secondary text
+        brass: '#C2A268', // warm accent — sparingly
+        line: 'rgba(233, 227, 213, 0.12)', // hairline on dark
       },
       fontFamily: {
-        display: ['var(--font-cormorant)', 'serif'],
-        body: ['var(--font-inter)', 'sans-serif'],
+        // One family only, across the whole site.
+        sans: ['var(--font-fraunces)', 'Georgia', 'serif'],
+        serif: ['var(--font-fraunces)', 'Georgia', 'serif'],
       },
       letterSpacing: {
-        widest2: '0.2em',
+        wordmark: '0.34em',
+        wide2: '0.18em',
+        wide3: '0.24em',
+      },
+      maxWidth: {
+        prose2: '64ch',
+      },
+      transitionTimingFunction: {
+        estate: 'cubic-bezier(0.22, 1, 0.36, 1)',
       },
     },
   },
